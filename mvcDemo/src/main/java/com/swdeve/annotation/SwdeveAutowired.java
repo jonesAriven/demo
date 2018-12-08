@@ -6,9 +6,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.FIELD)  //±íÊ¾×¢½âÊ¹ÓÃÔÚÔÚÀàµÄ³ÉÔ±±äÁ¿ÉÏ
-@Retention(RetentionPolicy.RUNTIME) //±íÊ¾×¢½âÔÚÓ¦ÓÃÆô¶¯Ê±¼ÓÔØ
-@Documented //°üº¬ÔÚJAVA docÖĞ
+@Target(ElementType.FIELD)  //è¡¨ç¤ºæ³¨è§£ä½¿ç”¨åœ¨åœ¨ç±»çš„æˆå‘˜å˜é‡ä¸Š
+@Retention(RetentionPolicy.RUNTIME) //è¡¨ç¤ºæ³¨è§£åœ¨åº”ç”¨å¯åŠ¨æ—¶åŠ è½½
+@Documented //åŒ…å«åœ¨JAVA docä¸­
 public @interface SwdeveAutowired {
 	String value () default "";
 }

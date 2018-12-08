@@ -29,15 +29,15 @@ import com.swdeve.controller.JonesController;
 
 public class JonesDispatherServlet extends HttpServlet {
 	List<String> classNames = new ArrayList<String>();
-	// iocÈİÆ÷
+	// iocå®¹å™¨
 	Map<String, Object> beans = new HashMap<String, Object>();
 	// handleMap
 	Map<String, Object> handleMaps = new HashMap<String, Object>();
 
 	public void init(ServletConfig config) {
-		// 1.ÊµÀı»¯ËùÓĞÓĞ×¢½âµÄÀà£¬basePackage£¬scan
+		// 1.å®ä¾‹åŒ–æ‰€æœ‰æœ‰æ³¨è§£çš„ç±»ï¼ŒbasePackageï¼Œscan
 		doScan("com.swdeve");
-		// 2.°ÑÉ¨Ãè³öÀ´µÄ.class½øĞĞÊµÀı»¯
+		// 2.æŠŠæ‰«æå‡ºæ¥çš„.classè¿›è¡Œå®ä¾‹åŒ–
 		doInstance();
 		// 3.
 		doAutowried();
@@ -68,11 +68,11 @@ public class JonesDispatherServlet extends HttpServlet {
 	}
 
 	private void doAutowried() {
-		for (Map.Entry<String, Object> entry : beans.entrySet()) {// ±éÀúbeans
+		for (Map.Entry<String, Object> entry : beans.entrySet()) {// éå†beans
 			Object instance = entry.getValue();
-			Class<?> clazz = instance.getClass();// Í¨¹ıÊµÀıµÃµ½Class¶ÔÏó
-			if (clazz.isAnnotationPresent(SwdeveController.class)) {// ±»±éÀú³öÀ´µÄ¿ØÖÆµÄClass¶ÔÏó
-				Field[] fields = clazz.getDeclaredFields();// Í¨¹ıcalss¶ÔÏóµÃµ½³ÉÔ±±äÁ¿
+			Class<?> clazz = instance.getClass();// é€šè¿‡å®ä¾‹å¾—åˆ°Classå¯¹è±¡
+			if (clazz.isAnnotationPresent(SwdeveController.class)) {// è¢«éå†å‡ºæ¥çš„æ§åˆ¶çš„Classå¯¹è±¡
+				Field[] fields = clazz.getDeclaredFields();// é€šè¿‡calsså¯¹è±¡å¾—åˆ°æˆå‘˜å˜é‡
 				for (Field field : fields) {
 					if (field.isAnnotationPresent(SwdeveAutowired.class)) {
 						SwdeveAutowired auto = field.getAnnotation(SwdeveAutowired.class);
@@ -103,26 +103,26 @@ public class JonesDispatherServlet extends HttpServlet {
 			String cn = className.replace(".class", "");
 			try {
 				// System.out.print("-----------------------------------"+cn);
-				Class<?> clazz = Class.forName(cn);// Í¨¹ı °üÃû+ÀàÃû µÃµ½Class¶ÔÏó
-				if (clazz.isAnnotationPresent(SwdeveController.class)) {// ±»±éÀú³öÀ´µÄ¿ØÖÆµÄClass¶ÔÏó
-					Object instance = clazz.newInstance();// Í¨¹ıClass¶ÔÏóµÄnewInstance·½·¨ÊµÀı»¯Àà
+				Class<?> clazz = Class.forName(cn);// é€šè¿‡ åŒ…å+ç±»å å¾—åˆ°Classå¯¹è±¡
+				if (clazz.isAnnotationPresent(SwdeveController.class)) {// è¢«éå†å‡ºæ¥çš„æ§åˆ¶çš„Classå¯¹è±¡
+					Object instance = clazz.newInstance();// é€šè¿‡Classå¯¹è±¡çš„newInstanceæ–¹æ³•å®ä¾‹åŒ–ç±»
 					// SwdeveController annotation = clazz.getAnnotation(SwdeveController.class);
 					SwdeveRequestMapping annotation = clazz.getAnnotation(SwdeveRequestMapping.class);
 					String key = annotation.value();
 					// System.out.println("key1=" + key);
-					beans.put(key, instance);// ÍùiocÈİÆ÷ÖÖ´æ·Åbean
-				} else if (clazz.isAnnotationPresent(SwdeveRequestMapping.class)) {// ±»±éÀú³öÀ´µÄ¿ØÖÆµÄClass¶ÔÏó
-					Object instance = clazz.newInstance();// Í¨¹ıClass¶ÔÏóµÄnewInstance·½·¨ÊµÀı»¯Àà
+					beans.put(key, instance);// å¾€iocå®¹å™¨ç§å­˜æ”¾bean
+				} else if (clazz.isAnnotationPresent(SwdeveRequestMapping.class)) {// è¢«éå†å‡ºæ¥çš„æ§åˆ¶çš„Classå¯¹è±¡
+					Object instance = clazz.newInstance();// é€šè¿‡Classå¯¹è±¡çš„newInstanceæ–¹æ³•å®ä¾‹åŒ–ç±»
 					SwdeveRequestMapping annotation = clazz.getAnnotation(SwdeveRequestMapping.class);
 					String key = annotation.value();
 					// System.out.println("key2=" + key);
-					beans.put(key, instance);// ÍùiocÈİÆ÷ÖÖ´æ·Åbean
-				} else if (clazz.isAnnotationPresent(SwdeveService.class)) {// ±»±éÀú³öÀ´µÄ¿ØÖÆµÄClass¶ÔÏó
-					Object instance = clazz.newInstance();// Í¨¹ıClass¶ÔÏóµÄnewInstance·½·¨ÊµÀı»¯Àà
+					beans.put(key, instance);// å¾€iocå®¹å™¨ç§å­˜æ”¾bean
+				} else if (clazz.isAnnotationPresent(SwdeveService.class)) {// è¢«éå†å‡ºæ¥çš„æ§åˆ¶çš„Classå¯¹è±¡
+					Object instance = clazz.newInstance();// é€šè¿‡Classå¯¹è±¡çš„newInstanceæ–¹æ³•å®ä¾‹åŒ–ç±»
 					SwdeveService annotation = clazz.getAnnotation(SwdeveService.class);
 					String key = annotation.value();
 					// System.out.println("key3=" + key);
-					beans.put(key, instance);// ÍùiocÈİÆ÷ÖÖ´æ·Åbean
+					beans.put(key, instance);// å¾€iocå®¹å™¨ç§å­˜æ”¾bean
 				} else {
 					continue;
 				}
@@ -145,26 +145,26 @@ public class JonesDispatherServlet extends HttpServlet {
 		// System.out.println("basePackage=" + basePackage);
 		String resource = "/" + basePackage.replace(".", "/");
 		/*
-		 * replaceµÄ²ÎÊıÊÇcharºÍCharSequence£¬¼´¿ÉÒÔÖ§³Ö×Ö·ûµÄÌæ»»£¬Ò²Ö§³Ö×Ö·û´®µÄÌæ»»(CharSequence¼´×Ö·û´®ĞòÁĞµÄÒâË¼,
-		 * Ëµ°×ÁËÒ²¾ÍÊÇ×Ö·û´®)£»
+		 * replaceçš„å‚æ•°æ˜¯charå’ŒCharSequenceï¼Œå³å¯ä»¥æ”¯æŒå­—ç¬¦çš„æ›¿æ¢ï¼Œä¹Ÿæ”¯æŒå­—ç¬¦ä¸²çš„æ›¿æ¢(CharSequenceå³å­—ç¬¦ä¸²åºåˆ—çš„æ„æ€,
+		 * è¯´ç™½äº†ä¹Ÿå°±æ˜¯å­—ç¬¦ä¸²)ï¼›
 		 */
-		// ½« basePackage ÖĞËùÓĞ ¡°\\.¡±Ìæ»»³É ¡°/¡±
+		// å°† basePackage ä¸­æ‰€æœ‰ â€œ\\.â€æ›¿æ¢æˆ â€œ/â€
 		// String resource = "/" + basePackage.replace("\\.", "/");
 		/*
-		 * replaceAllµÄ²ÎÊıÊÇregex£¬¼´»ùÓÚÕıÔò±í´ïÊ½µÄÌæ»»£¬±ÈÈç£¬¿ÉÒÔÍ¨¹ıreplaceAll("\\d",
-		 * "*")°ÑÒ»¸ö×Ö·û´®ËùÓĞµÄÊı×Ö×Ö·û¶¼»»³ÉĞÇºÅ;
+		 * replaceAllçš„å‚æ•°æ˜¯regexï¼Œå³åŸºäºæ­£åˆ™è¡¨è¾¾å¼çš„æ›¿æ¢ï¼Œæ¯”å¦‚ï¼Œå¯ä»¥é€šè¿‡replaceAll("\\d",
+		 * "*")æŠŠä¸€ä¸ªå­—ç¬¦ä¸²æ‰€æœ‰çš„æ•°å­—å­—ç¬¦éƒ½æ¢æˆæ˜Ÿå·;
 		 */
-		// ½« basePackageÖĞËùÓĞ ¡°.¡±Ìæ»»³É ¡°/¡±
+		// å°† basePackageä¸­æ‰€æœ‰ â€œ.â€æ›¿æ¢æˆ â€œ/â€
 		// String resource = "/" + basePackage.replaceAll("\\.", "/");
 		// System.out.println("resource=" + resource);
 		URL url = this.getClass().getClassLoader().getResource(resource);
-		// µÃµ½ÎÄ¼şÂ·¾¶
+		// å¾—åˆ°æ–‡ä»¶è·¯å¾„
 		String fileStr = url.getFile();
-		// ¸ù¾İÎÄ¼şÂ·¾¶µÃµ½ÎÄ¼ş
+		// æ ¹æ®æ–‡ä»¶è·¯å¾„å¾—åˆ°æ–‡ä»¶
 		File file = new File(fileStr);
-		// µÃµ½ÎÄ¼şÏÂµÄËùÓĞÎÄ¼ş¼ĞµÄÂ·¾¶ºÍ×ÓÎÄ¼şÂ·¾¶
+		// å¾—åˆ°æ–‡ä»¶ä¸‹çš„æ‰€æœ‰æ–‡ä»¶å¤¹çš„è·¯å¾„å’Œå­æ–‡ä»¶è·¯å¾„
 		String[] fileStrs = file.list();
-		// ±éÀúÎÄ¼ş¼ĞÂ·¾¶ºÍÎÄ¼şÂ·¾¶
+		// éå†æ–‡ä»¶å¤¹è·¯å¾„å’Œæ–‡ä»¶è·¯å¾„
 		for (String path : fileStrs) {
 			// System.out.println("fileStr=" + fileStr + "~path=" + path);
 			File fileTemp = new File(fileStr + path);
@@ -211,7 +211,7 @@ public class JonesDispatherServlet extends HttpServlet {
 	}
 
 	/**
-	 * ²ßÂÔÄ£Ê½
+	 * ç­–ç•¥æ¨¡å¼
 	 * 
 	 * @param req
 	 * @param resp
@@ -219,8 +219,8 @@ public class JonesDispatherServlet extends HttpServlet {
 	 * @return
 	 */
 	private static Object[] hand(HttpServletRequest req, HttpServletResponse resp, Method method) {
-		Class<?>[] paramClazzs = method.getParameterTypes();// ÄÃµ½µ±Ç°´ıÖ´ĞĞ·½·¨ÓĞÄÄĞ©²ÎÊı
-		Object[] args = new Object[paramClazzs.length];// ¸ù¾İ²ÎÊı¸öÊınewÒ»¸ö²ÎÊıÊı×é£¬½«·½·¨ÀïµÄËùÓĞ²ÎÊı¸³Öµµ½argsÀ´
+		Class<?>[] paramClazzs = method.getParameterTypes();// æ‹¿åˆ°å½“å‰å¾…æ‰§è¡Œæ–¹æ³•æœ‰å“ªäº›å‚æ•°
+		Object[] args = new Object[paramClazzs.length];// æ ¹æ®å‚æ•°ä¸ªæ•°newä¸€ä¸ªå‚æ•°æ•°ç»„ï¼Œå°†æ–¹æ³•é‡Œçš„æ‰€æœ‰å‚æ•°èµ‹å€¼åˆ°argsæ¥
 		int args_i = 0;
 		int index = 0;
 		for (Class<?> paramClazz : paramClazzs) {
@@ -230,15 +230,15 @@ public class JonesDispatherServlet extends HttpServlet {
 			if (ServletResponse.class.isAssignableFrom(paramClazz)) {
 				args[args_i++] = resp;
 			}
-			// ´Ó0-1ÅĞ¶ÏÓĞÃ»ÓĞRequestParam×¢½â£¬ºÜÃ÷ÏÔparamClazzÎª0ºÍ1Ê±£¬²»ÊÇ
-			// µ±Îª2ºÍ3Ê±Îª@RequestParam£¬ĞèÒª½âÎö
+			// ä»0-1åˆ¤æ–­æœ‰æ²¡æœ‰RequestParamæ³¨è§£ï¼Œå¾ˆæ˜æ˜¾paramClazzä¸º0å’Œ1æ—¶ï¼Œä¸æ˜¯
+			// å½“ä¸º2å’Œ3æ—¶ä¸º@RequestParamï¼Œéœ€è¦è§£æ
 			Annotation[] params = method.getParameterAnnotations()[index];
 			// System.out.println("params.length=" + params.length);
 			if (params.length > 0) {
 				for (Annotation param : params) {
 					if (SwdeveRequestParam.class.isAssignableFrom(param.getClass())) {
 						SwdeveRequestParam rp = (SwdeveRequestParam) param;
-						// ÕÒµ½×¢½âÀïµÄnameºÍage
+						// æ‰¾åˆ°æ³¨è§£é‡Œçš„nameå’Œage
 						// System.out.println("rp.value()=" + rp.value());
 						args[args_i++] = req.getParameter(rp.value());
 						// System.out.println(args[0].toString() + "~" + args[1].toString());

@@ -6,9 +6,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.PARAMETER)  //±íÊ¾×¢½âÊ¹ÓÃÔÚÔÚÀàÉÏ
-@Retention(RetentionPolicy.RUNTIME) //±íÊ¾×¢½âÔÚÓ¦ÓÃÆô¶¯Ê±¼ÓÔØ
-@Documented //°üº¬ÔÚJAVA docÖĞ
+@Target(ElementType.PARAMETER)  //è¡¨ç¤ºæ³¨è§£ä½¿ç”¨åœ¨åœ¨ç±»ä¸Š
+@Retention(RetentionPolicy.RUNTIME) //è¡¨ç¤ºæ³¨è§£åœ¨åº”ç”¨å¯åŠ¨æ—¶åŠ è½½
+@Documented //åŒ…å«åœ¨JAVA docä¸­
 public @interface SwdeveRequestParam {
 	String value () default "";
 }
