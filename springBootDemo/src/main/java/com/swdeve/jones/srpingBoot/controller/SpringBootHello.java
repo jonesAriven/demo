@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 //@Controller
-//@ResponseBody//该注解若写在类上表示该类下的所有方法都是直接将方法的返回值写到浏览器端
+//@ResponseBody//该注解若写在类上表示该类下的所有方法都是直接将方法的返回值写到浏览器端(如果是对象转为json数据)
 @RestController // 可以用@RestController注解代替@Controller和@ResponseBody两个注解
 public class SpringBootHello {
 
