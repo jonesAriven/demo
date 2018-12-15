@@ -2,6 +2,7 @@ package com.swdeve.jones.srpingBoot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * @SpringBootApplication 用来标注类，说明这是一个spring
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Administrator
  *
  */
+//@ImportResource(locations= {"classpath:beans.xml"}) //导入spring配置，让配置文件的内容生效
 @SpringBootApplication
 public class HelloWorldMainApplication {
 	public static void main(String[] args) {

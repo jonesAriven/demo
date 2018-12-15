@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.swdeve.jones.srpingBoot.bean.People;
@@ -24,10 +25,18 @@ public class HelloWorldMainApplicationTests {
 
 	@Autowired
 	private People people;
+	
+	@Autowired
+	ApplicationContext ioc;
 	@Test
 	public void contextLoads() {
 		System.out.println(person.toString());
 		System.out.println(people.toString());
 	}
 
+	@Test
+	public void testIoc() {
+		boolean b = ioc.containsBean("helloService");
+		System.out.println("是否包含helloService：" + b);
+	}
 }

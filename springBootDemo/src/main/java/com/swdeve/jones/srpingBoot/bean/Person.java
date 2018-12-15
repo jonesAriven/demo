@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.hibernate.validator.constraints.Email;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,8 +15,10 @@ import org.springframework.stereotype.Component;
  * @ConfigurationProperties prefix="person" 指明对配置中那个属性进行一一映射
  * @author Administrator 只有这个组件是容器中的组件才能使用容器中的@ConfigurationProperties功能
  * @ConfigurationProperties(prefix = "person")默认从全局配置文件中获取值；
+ * @PropertySource(value="classpath:person.properties") 加载指定路径下的配置文件
  */
-@Component
+//@PropertySource(value= {"classpath:person.properties"})
+@Component//将该类添加到容器中
 @ConfigurationProperties(prefix = "person")
 public class Person {
 	private String name;

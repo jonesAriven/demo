@@ -1,25 +1,25 @@
 server:
     port: 8081
-person:
-    name: 张三
-    age: 21
-    boss: true
-    birthDate: 2018/12/09
-    lastName: 三
-    ##双引号会识别转义字符
-    hobby: "喜欢羽毛球 \n 台球"
-    ##单引号不会识别转义字符
-    experience: '毕业于*****小学 \n 毕业于****中学'
-    email: 111111@qq.com
-    map: {k1: v1,k2: v2}
-    ##yml中map的另外一种写法
-    map1:
-        map1k1: map1v1
-        map1k2: map1v2
-    list: [zhangsan,lishi]
-    list1:
-        - 赵钱
-        - 孙李
-    dog: 
-        dogName: 小狗
-        dogAge: 2
+#person:
+#    name: 张三
+#    age: 21
+#    boss: true
+#    birthDate: 2018/12/09
+#    lastName: 三
+#    ##双引号会识别转义字符
+#    hobby: "喜欢羽毛球 \n 台球"
+#    ##单引号不会识别转义字符
+#    experience: '毕业于*****小学 \n 毕业于****中学'
+#    email: 111111@qq.com
+#    map: {k1: v1,k2: v2}
+#    ##yml中map的另外一种写法
+#    map1:
+#        map1k1: map1v1
+#        map1k2: map1v2
+#    list: [zhangsan,lishi]
+#    list1:
+#        - 赵钱
+#        - 孙李
+#    dog: 
+#        dogName: 小狗
+#        dogAge: 2
