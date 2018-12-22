@@ -54,6 +54,19 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- 添加该依赖后，eclipse开发springboot项目修改后台文件项目会自动重启  begin-->
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>springloaded</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+		<!-- 添加该依赖后，eclipse开发springboot项目修改后台文件项目会自动重启  end-->
+		
 	</dependencies>
 
 	<build>

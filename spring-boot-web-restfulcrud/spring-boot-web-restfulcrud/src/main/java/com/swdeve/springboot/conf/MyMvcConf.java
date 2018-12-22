@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.swdeve.springboot.component.LoginHandlerInterceptor;
 import com.swdeve.springboot.component.MyLocaleResolver;
 
 @Configuration
@@ -29,14 +30,16 @@ public class MyMvcConf extends WebMvcConfigurerAdapter {
 				registry.addViewController("/").setViewName("login");
 				registry.addViewController("/index").setViewName("login");
 				registry.addViewController("/index.html").setViewName("login");
+				registry.addViewController("/main.html").setViewName("dashboard");
 			}
 
-			// // 注册拦截器
-			// @Override
-			// public void addInterceptors(InterceptorRegistry registry) {
-			// // TODO Auto-generated method stub
-			// registry.addInterceptor(registry);
-			// }
+			// 注册拦截器
+			@Override
+			public void addInterceptors(InterceptorRegistry registry) {
+				// TODO Auto-generated method stub
+				registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/",
+						"/index", "/index.html","/user/login");
+			}
 
 		};
 
@@ -45,7 +48,6 @@ public class MyMvcConf extends WebMvcConfigurerAdapter {
 
 	@Bean // 将自己定义的区域信息解析器放到容器中
 	public LocaleResolver localeResolver() {
-
 		return new MyLocaleResolver();
 	}
 
