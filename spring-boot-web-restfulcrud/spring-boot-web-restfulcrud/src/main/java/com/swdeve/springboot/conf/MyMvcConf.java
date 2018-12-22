@@ -36,6 +36,7 @@ public class MyMvcConf extends WebMvcConfigurerAdapter {
 			// 注册拦截器
 			@Override
 			public void addInterceptors(InterceptorRegistry registry) {
+				//静态资源springboot已经做好了映射，不用管，可以直接访问静态资源
 				// TODO Auto-generated method stub
 				registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/",
 						"/index", "/index.html","/user/login");
