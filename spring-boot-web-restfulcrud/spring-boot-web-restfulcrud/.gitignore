@@ -9,7 +9,7 @@
 .settings
 .springBeans
 .sts4-cache
-springboot.log
+
 
 ### IntelliJ IDEA ###
 .idea
@@ -28,3 +28,5 @@ springboot.log
 /hs_err_pid*.log
 /replay_pid*.log
 
+
+/springboot.log

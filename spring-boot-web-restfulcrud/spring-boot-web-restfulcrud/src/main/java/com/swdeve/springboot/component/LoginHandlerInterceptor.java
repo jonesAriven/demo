@@ -36,7 +36,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
 			request.setAttribute("msg", "没有权限，请先登录");
 			// 若没有登录，转发到“/index.html”请求，
 			/**
-			 * 转发与重定向的区别，转发是服务端完成的，在浏览器端看不到访问地址的变化； 重定向是浏览器端完成的，可以看到访问地址的变化
+			 * 转发与重定向的区别，转发是服务端完成的，在浏览器端看不到访问地址的变化； 重定向是客户端完成的，可以看到访问地址的变化
 			 */
 			request.getRequestDispatcher("/index.html").forward(request, response);
 			return false;
