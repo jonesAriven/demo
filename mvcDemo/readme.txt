@@ -1,2 +1,2 @@
-访问地址：http://127.0.0.1:8080/mvcDemo/JonesControllerTest/query?name=jonse&age=26
-结果，浏览器端应返回：name=jones  age=26
+璁块棶鍦板潃锛歨ttp://127.0.0.1:8080/mvcDemo/JonesControllerTest/query?name=jonse&age=26
+缁撴灉锛屾祻瑙堝櫒绔簲杩斿洖锛歯ame=jones  age=26
